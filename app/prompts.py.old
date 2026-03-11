@@ -1,0 +1,85 @@
+# Prompt variations for summarization
+summarize_prompts = {
+
+    "v1": """
+Summarize the text below in under {max_length} words.
+
+Text:
+{text}
+""",
+
+    "v2": """
+You are a professional summarizer.
+
+Write a concise summary of the following text in no more than {max_length} words.
+
+Text:
+{text}
+""",
+
+    "v3": """
+Extract the key ideas from the following text.
+
+Rules:
+- Maximum {max_length} words
+- Focus only on essential ideas
+- Avoid unnecessary details
+
+Text:
+{text}
+"""
+}
+
+
+# Prompt variations for sentiment analysis
+sentiment_prompts = {
+
+    "v1": """
+Classify the sentiment of the following text.
+
+Possible sentiments:
+positive
+negative
+neutral
+
+Text:
+{text}
+
+Return:
+sentiment
+confidence
+explanation
+""",
+
+"v2": """
+Analyze the sentiment of the following text.
+
+Return a JSON object with these fields:
+
+sentiment: positive | negative | neutral
+confidence: number between 0 and 1
+explanation: short explanation
+
+Text:
+{text}
+""",
+
+    "v3": """
+You are a sentiment analysis system.
+
+Determine whether the sentiment is:
+positive, negative, or neutral.
+
+Provide the result as JSON:
+
+{{
+"sentiment": "",
+"confidence": 0.0,
+"explanation": ""
+}}
+
+Text:
+{text}
+"""
+}
+

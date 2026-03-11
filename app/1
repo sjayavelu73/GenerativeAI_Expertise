@@ -1,0 +1,44 @@
+from fastapi import FastAPI
+from datetime import datetime
+import json
+
+from .schemas import *
+from .llm import call_llm
+from .prompts import summarize_prompts, sentiment_prompts
+
+app = FastAPI()
+
+
+@app.get("/health")
+def health():
+
+    return {
+        "status": "ok",
+        "timestamp": datetime.utcnow()
+    }
+
+
+@app.post("/summarize", response_model=SummaryResponse)
+def summarize(req: SummarizeRequest):
+
+    prompt = summarize_prompts["v3"].format(
+        text=req.text,
+        max_length=req.max_length
+    )
+
+    result = call_llm(prompt)
+
+    return {"summary": result}
+
+
+@app.post("/analyze-sentiment", response_model=SentimentResponse)
+def sentiment(req: SentimentRequest):
+
+    prompt = sentiment_prompts["v2"].format(text=req.text)
+
+    result = call_llm(prompt,json_mode=True)
+
+    data = json.loads(result)
+
+    return data
+
