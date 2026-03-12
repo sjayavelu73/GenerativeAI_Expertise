@@ -207,8 +207,6 @@ Configured the service:
 The API became publicly accessible with documentation at /docs and /redoc.
 
 https://fastapi-llm-api-apmc.onrender.com/
-https://fastapi-llm-api-apmc.onrender.com/docs
-https://fastapi-llm-api-apmc.onrender.com/redoc
 
 ## Additional Resources
 
