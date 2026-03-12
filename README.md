@@ -194,10 +194,15 @@ Connected the GitHub repository to Render.
 
 Configured the service:
      Environment: Python
+     
      Build Command: pip install -r requirements.txt
+     
      Start Command:uvicorn app.main:app --host 0.0.0.0 --port 10000
+     
      Added environment variables (like OPENAI_API_KEY) on Render to replace .env.
+     
      Clicked Deploy, letting Render clone the repo, install dependencies, and start the server.
+     
 
 The API became publicly accessible with documentation at /docs and /redoc.
 
