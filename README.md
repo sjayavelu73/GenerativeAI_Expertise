@@ -10,18 +10,6 @@ A comprehensive guide for building and deploying a FastAPI-based LLM (Large Lang
 - [Part II: Git Repository Management](#part-ii-git-repository-management)
 - [Part III: Ongoing Development](#part-iii-ongoing-development)
 
----  What is the Project about --------------------------------------------
-
-This project demonstrates how to take an AI capability and wrap it in a production-grade API that can be deployed to the cloud. We went from zero to a deployed, scalable research assistant in under 50 lines of code.
-
-┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-│                 │       │                 │       │                 │
-│   Client App    │──────▶│   FastAPI       │──────▶│   OpenAI API    │
-│   (Any HTTP)    │       │   /research     │       │   GPT-4o-mini   │
-│                 │◀──────│                 │◀──────│                 │
-└─────────────────┘       └─────────────────┘       └─────────────────┘
-      Request              Validates & Routes         Generates Answer
-
 
 ## Part I: Python Environment Setup
 
