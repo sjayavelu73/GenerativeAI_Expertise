@@ -8,13 +8,43 @@ from .prompts import summarize_prompts, sentiment_prompts
 
 app = FastAPI()
 
+app = FastAPI(
+    title="FastAPI LLM API",
+    description="Endpoints for text summarization and sentiment analysis",
+    version="1.0.0",
+)
 
+# -----------------------------
+# Pydantic models
+# -----------------------------
+class SummarizeRequest(BaseModel):
+    text: str
+    max_length: int = 60  # default max_length
+
+class SentimentRequest(BaseModel):
+    text: str
+
+# -----------------------------
+# Root route
+# -----------------------------
+@app.get("/")
+def root():
+    return {
+        "message": "Welcome to FastAPI. FastAPI LLM API running",
+        "endpoints": ["/health", "/summarize", "/analyze-sentiment"],
+        "docs": "/docs",
+        "redoc": "/redoc"
+    }
+
+# -----------------------------
+# Health check
+# -----------------------------
 @app.get("/health")
-def health():
-
+def health_check():
+    from datetime import datetime
     return {
         "status": "ok",
-        "timestamp": datetime.utcnow()
+        "timestamp": datetime.utcnow().isoformat() + "Z"
     }
 
 
